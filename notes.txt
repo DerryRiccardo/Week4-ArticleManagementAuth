@@ -1,0 +1,43 @@
+// Set Up
+npm init -y
+npm install express prisma @prisma/client joi
+npm install --save-dev nodemon
+npm install bcryptjs jsonwebtoken
+npx prisma init
+npx prisma migrate dev --name init
+
+
+🔵 1xx — Informational (jarang digunakan di Express)
+Contoh:
+
+100 Continue: Server menerima permintaan awal, lanjutkan.
+
+101 Switching Protocols: Untuk upgrade protokol (jarang di API biasa).
+
+🟢 2xx — Success (permintaan berhasil)
+Code	Nama	Kegunaan
+200	OK	Permintaan berhasil, biasa untuk GET, PUT, PATCH, DELETE
+201	Created	Data berhasil dibuat (digunakan untuk POST)
+202	Accepted	Permintaan diterima tapi belum diproses
+204	No Content	Permintaan berhasil tapi tidak mengembalikan data (biasanya DELETE)
+
+🟡 3xx — Redirection (pengalihan)
+Code	Nama	Kegunaan
+301	Moved Permanently	Arahkan ke URL baru
+302	Found	Redirect sementara
+304	Not Modified	Untuk cache, data belum berubah
+
+🔴 4xx — Client Error (kesalahan dari sisi client)
+Code	Nama	Kegunaan
+400	Bad Request	Data tidak valid atau kurang
+401	Unauthorized	Perlu autentikasi (belum login/token salah)
+403	Forbidden	Akses ditolak, meskipun sudah login
+404	Not Found	Data atau route tidak ditemukan
+405	Method Not Allowed	Metode HTTP (GET/POST/etc.) tidak diizinkan
+422	Unprocessable Entity	Data valid secara format, tapi gagal diproses (misalnya validasi gagal)
+
+🔴 5xx — Server Error (kesalahan dari sisi server)
+Code	Nama	Kegunaan
+500	Internal Server Error	Kesalahan umum di server
+502	Bad Gateway	Server dapat respon buruk dari server lain
+503	Service Unavailable	Server sedang down atau kelebihan beban
