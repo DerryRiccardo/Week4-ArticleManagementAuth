@@ -18,7 +18,7 @@ class UserService {
 			email: email,
 			password: hashedPassword,
 			role: "READER",
-			dateofBirth: new Date(dateOfBirth),
+			dateOfBirth: new Date(dateOfBirth),
 		};
 
 		const user = await UserRepository.createUser(userData);
@@ -61,10 +61,9 @@ class UserService {
 			throw new Error("Invalid role");
 		}
 
-		const updatedUser = await UserRepository.updateUser(
-			email,
-			newRole.toUpperCase()
-		);
+		const updatedUser = await UserRepository.updateUser(existingUser.id, {
+			role: newRole.toUpperCase(),
+		});
 		return updatedUser;
 	}
 }

@@ -47,13 +47,12 @@ class UserController {
 			await schema.validateAsync(req.body);
 
 			const { email, password } = req.body;
-			const result = await UserService.login(email, password);
+			const result = await UserService.loginUser(email, password);
 
 			res.status(200).json({
 				success: true,
 				message: "Login successful",
-				data: result,
-				token: token,
+				token: result,
 			});
 		} catch (err) {
 			if (err.isJoi) {

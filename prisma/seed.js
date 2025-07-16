@@ -1,4 +1,6 @@
 import pkg from "@prisma/client";
+import bcrypt from "bcrypt";
+
 const { PrismaClient } = pkg;
 
 const prisma = new PrismaClient();
